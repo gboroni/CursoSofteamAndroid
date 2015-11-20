@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -40,6 +41,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
         TextView nome = (TextView) v.findViewById(R.id.nome);
         nome.setText(getItem(position));
+
+        ImageView imagem  = (ImageView) v.findViewById(R.id.imageView);
+        new DownloadImageAsync("http://www.softeam.com.br/images/logo.png").execute(imagem);
 
 
 

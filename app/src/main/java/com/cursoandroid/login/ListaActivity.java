@@ -46,10 +46,11 @@ public class ListaActivity extends AppCompatActivity {
         itens.add("Web");
         itens.add("Camera");
 
-      
+      CustomAdapter customAdapter = new CustomAdapter(this,R.layout.custom_item,itens);
 
         // Assign adapter to ListView
-        listView.setAdapter(adapter);
+//        listView.setAdapter(adapter);
+        listView.setAdapter(customAdapter);
 
         // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
