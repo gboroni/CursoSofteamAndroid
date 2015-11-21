@@ -49,6 +49,15 @@ public class ListaActivity extends AppCompatActivity {
 
       CustomAdapter customAdapter = new CustomAdapter(this,R.layout.custom_item,itens);
 
+        List<Integer> imagens = new ArrayList<Integer>();
+        imagens.add(R.drawable.chek);
+        imagens.add(R.drawable.ic_launcher);
+        imagens.add(R.drawable.chek);
+        imagens.add(R.drawable.ic_launcher);
+
+        customAdapter.setCtx(this);
+
+        customAdapter.setImagens(imagens);
         // Assign adapter to ListView
 //        listView.setAdapter(adapter);
         listView.setAdapter(customAdapter);

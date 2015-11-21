@@ -65,14 +65,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+                //VARIAVEIS
+//    public static final String PREFERENCES = "preferences";
+//    public static final String LOGIN_PREFERENCES = "login";
+//
+//    SharedPreferences settings;
+//    SharedPreferences.Editor prefEditor;
     private void setTextLoginPreferences(String value){
+        //ABRE A PREFERENCIA CRIADA
         settings = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        //ACAO DE EDICAO
         prefEditor = settings.edit();
+        //INFORMA A ACAO DE SALVAR O VALOR RECEBIDO DE PARAMETRO NA CHAVE CRIADA
         prefEditor.putString(LOGIN_PREFERENCES, value);
+        //SALVA AS ALTERACOES
         prefEditor.commit();
     }
 
     private String getSharedLogin(){
+        //ABRE A PREFERENCIA CRIADA
         settings = getSharedPreferences(PREFERENCES,MODE_PRIVATE);
         if (settings.contains(LOGIN_PREFERENCES))
             return settings.getString(LOGIN_PREFERENCES,""); //em vazio default value

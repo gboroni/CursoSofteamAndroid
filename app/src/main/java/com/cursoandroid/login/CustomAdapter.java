@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.List;
@@ -19,6 +21,10 @@ import java.util.List;
  */
 public class CustomAdapter extends ArrayAdapter<String> {
 
+    private List<Integer> imagens;
+
+    private  Context ctx;
+
     public CustomAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
@@ -27,8 +33,19 @@ public class CustomAdapter extends ArrayAdapter<String> {
         super(context, resource, items);
     }
 
+    public List<Integer> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<Integer> imagens) {
+        this.imagens = imagens;
+    }
+    public void setCtx(Context ctx){
+        this.ctx = ctx;
+    }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
 
@@ -43,7 +60,16 @@ public class CustomAdapter extends ArrayAdapter<String> {
         nome.setText(getItem(position));
 
         ImageView imagem  = (ImageView) v.findViewById(R.id.imageView);
-        new DownloadImageAsync("http://www.softeam.com.br/images/logo.png").execute(imagem);
+        imagem.setImageResource(imagens.get(position));
+
+        Button btn = (Button) v.findViewById(R.id.informar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ctx,""+position,Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 
 

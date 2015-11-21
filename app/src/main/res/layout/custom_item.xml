@@ -18,4 +18,11 @@
         android:text="Medium Text"
         android:layout_marginTop="20dp"
         android:id="@+id/nome" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="posicao"
+        android:layout_marginTop="20dp"
+        android:id="@+id/informar" />
 </LinearLayout>
