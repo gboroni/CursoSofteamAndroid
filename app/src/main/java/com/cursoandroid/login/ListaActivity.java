@@ -45,6 +45,7 @@ public class ListaActivity extends AppCompatActivity {
         itens.add("Ligar");
         itens.add("Web");
         itens.add("Camera");
+        itens.add("Download Activity");
 
       CustomAdapter customAdapter = new CustomAdapter(this,R.layout.custom_item,itens);
 
@@ -80,12 +81,20 @@ public class ListaActivity extends AppCompatActivity {
                     case 2:
                         pickImage();
                         break;
+                    case 3:
+                        openDownloadImage();
+                        break;
 
                 }
 
             }
 
         });
+    }
+
+    private void openDownloadImage(){
+        Intent i = new Intent(this,DownloadActivity.class);
+        startActivity(i);
     }
 
     protected void onActivityResult(int requestCode, int resultCode,
