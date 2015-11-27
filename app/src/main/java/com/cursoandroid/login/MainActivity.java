@@ -1,6 +1,5 @@
 package com.cursoandroid.login;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private EditText login;
@@ -48,18 +46,19 @@ public class MainActivity extends AppCompatActivity {
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!user.verificaLogin(senha.getText().toString(),login.getText().toString())){
-                    Toast.makeText(MainActivity.this,"Login incorreto!",Toast.LENGTH_LONG).show();
-                }else {
-                    if (salvar_login.isChecked()){
-                        setTextLoginPreferences(login.getText().toString());
-                    }else{
-                       setTextLoginPreferences("");
-                    }
-                    Intent i = new Intent(MainActivity.this,ListaActivity.class);
-                    startActivity(i);
-                    finish();
-                }
+                new LoginAsyncTask(MainActivity.this).execute("http://10.27.168.168/uploads/login.php?usuario="+login.getText()+"&senha="+senha.getText()+"");
+//                if (!user.verificaLogin(senha.getText().toString(),login.getText().toString())){
+//                    Toast.makeText(MainActivity.this,"Login incorreto!",Toast.LENGTH_LONG).show();
+//                }else {
+//                    if (salvar_login.isChecked()){
+//                        setTextLoginPreferences(login.getText().toString());
+//                    }else{
+//                       setTextLoginPreferences("");
+//                    }
+//                    Intent i = new Intent(MainActivity.this,ListaActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                }
             }
         });
 

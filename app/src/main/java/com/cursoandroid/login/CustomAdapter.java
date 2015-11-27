@@ -60,7 +60,8 @@ public class CustomAdapter extends ArrayAdapter<String> {
         nome.setText(getItem(position));
 
         ImageView imagem  = (ImageView) v.findViewById(R.id.imageView);
-        imagem.setImageResource(imagens.get(position));
+//        imagem.setImageResource(imagens.get(position));
+        new DownloadImageAsync("http://10.27.168.168/teste/softeam.jpg").execute(imagem);
 
         Button btn = (Button) v.findViewById(R.id.informar);
         btn.setOnClickListener(new View.OnClickListener() {
