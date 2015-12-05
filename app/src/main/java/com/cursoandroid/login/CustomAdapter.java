@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,13 +56,20 @@ public class CustomAdapter extends ArrayAdapter<String> {
             v = vi.inflate(R.layout.custom_item, null);
         }
 
+        List<String> urls = new ArrayList<String>();
+        urls.add("http://10.27.168.168/teste/softeam.jpg");
+        urls.add("http://www.canon.pt/Images/Android-logo_tcm121-1232684.png");
+        urls.add("https://pbs.twimg.com/profile_images/616076655547682816/6gMRtQyY.jpg");
+        urls.add("http://www.comillait.com/wp-content/uploads/2015/09/android-pissin-on-apple-decal.jpg");
+
+    
 
         TextView nome = (TextView) v.findViewById(R.id.nome);
         nome.setText(getItem(position));
 
         ImageView imagem  = (ImageView) v.findViewById(R.id.imageView);
 //        imagem.setImageResource(imagens.get(position));
-        new DownloadImageAsync("http://10.27.168.168/teste/softeam.jpg").execute(imagem);
+        new DownloadImageAsync(urls.get(position)).execute(imagem);
 
         Button btn = (Button) v.findViewById(R.id.informar);
         btn.setOnClickListener(new View.OnClickListener() {

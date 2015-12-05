@@ -63,6 +63,7 @@ public class LoginAsyncTask extends AsyncTask<String, Void, String> {
             // Convert the InputStream into a string
             BufferedReader r = new BufferedReader(new InputStreamReader(is));
             StringBuilder total = new StringBuilder();
+            
             String line;
             while ((line = r.readLine()) != null) {
                 total.append(line);
