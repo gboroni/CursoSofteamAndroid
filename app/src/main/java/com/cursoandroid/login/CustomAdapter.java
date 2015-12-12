@@ -3,6 +3,7 @@ package com.cursoandroid.login;
 /**
  * Created by boroni on 13/11/15.
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.library.DownloadImageAsync;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +59,18 @@ public class CustomAdapter extends ArrayAdapter<String> {
         }
 
         List<String> urls = new ArrayList<String>();
-        urls.add("http://10.27.168.168/teste/softeam.jpg");
-        urls.add("http://www.canon.pt/Images/Android-logo_tcm121-1232684.png");
-        urls.add("https://pbs.twimg.com/profile_images/616076655547682816/6gMRtQyY.jpg");
-        urls.add("http://www.comillait.com/wp-content/uploads/2015/09/android-pissin-on-apple-decal.jpg");
+        urls.add("http://localhost/teste/softeam.jpg");
+
+        urls.add("http://localhost/teste/softeam.jpg");
+
+        urls.add("http://localhost/teste/softeam.jpg");
+
+        urls.add("http://localhost/teste/softeam.jpg");
+
+//        urls.add("http://localhost/teste/softeam.jpg");
+//        urls.add("http://www.canon.pt/Images/Android-logo_tcm121-1232684.png");
+//        urls.add("https://pbs.twimg.com/profile_images/616076655547682816/6gMRtQyY.jpg");
+//        urls.add("http://www.comillait.com/wp-content/uploads/2015/09/android-pissin-on-apple-decal.jpg");
 
     
 
