@@ -120,11 +120,13 @@ public class LocaisAsyncTask extends AsyncTask<String, Void, String> {
                 String site = jsonObject.optString("site").toString();
                 String imagem_url = jsonObject.optString("imagem_url").toString();
 
-                locais.add(new Local(id, nome,  telefone,  endereco,  site,  imagem_url,  tipo));
+                if (Singleton.getInstance().getTipo_clicado().getId() == tipo)
+                    locais.add(new Local(id, nome,  telefone,  endereco,  site,  imagem_url,  tipo));
 
             }
 
         } catch (JSONException e) {}
+        Singleton.getInstance().setLocais(locais);
 
         return true;
     }

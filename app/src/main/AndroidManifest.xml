@@ -27,6 +27,10 @@
         <activity
             android:name=".ListaLocais"
             android:label="@string/title_activity_lista_locais"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DatailActivity"
+            android:label="@string/title_activity_datail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -123,6 +123,7 @@ public class TiposAsyncTask extends AsyncTask<String, Void, String> {
 
         } catch (JSONException e) {}
 
+        Singleton.getInstance().setTipos(tipos);
         return true;
     }
 
