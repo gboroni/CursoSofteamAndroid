@@ -1,4 +1,4 @@
-package com.cursoandroid.login;
+package com.cursoandroid.aula6;
 
 import org.junit.Test;
 

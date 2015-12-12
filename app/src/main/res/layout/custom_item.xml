@@ -4,12 +4,6 @@
     android:orientation="horizontal"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageView"
-        android:layout_margin="15dp"
-        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,10 +13,5 @@
         android:layout_marginTop="20dp"
         android:id="@+id/nome" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="posicao"
-        android:layout_marginTop="20dp"
-        android:id="@+id/informar" />
+
 </LinearLayout>

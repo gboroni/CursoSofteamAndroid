@@ -1,12 +1,11 @@
-package com.cursoandroid.login;
+package com.cursoandroid.aula6;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,18 +17,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by boroni on 20/11/15.
  */
-public class LoginAsyncTask extends AsyncTask<String, Void, String> {
+public class TiposAsyncTask extends AsyncTask<String, Void, String> {
     ImageView imageView =  null;
     private Context ctx;
     private ProgressDialog dialog;
+    private ListView lista;
+    private List<Tipo> tipos;
 
-
-    public LoginAsyncTask(Context ctx){
+    public TiposAsyncTask(Context ctx, ListView lista){
         this.ctx = ctx;
+        this.lista = lista;
         dialog = new ProgressDialog(ctx);
     }
 
@@ -38,7 +41,7 @@ public class LoginAsyncTask extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
         super.onPreExecute();
         if (dialog != null){
-            this.dialog.setMessage("Progress start");
+            this.dialog.setMessage("Carregando...");
             this.dialog.show();
         }
     }
@@ -92,33 +95,35 @@ public class LoginAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-      if (dialog != null){
-          dialog.hide();
-      }
-        if (parseJson(result)){
-            Intent i = new Intent(ctx,ListaActivity.class);
-            ctx.startActivity(i);
-        }else{
-            Toast.makeText(ctx,"Login Incorreto",Toast.LENGTH_LONG).show();
+
+
+        parseJson(result);
+        CustomAdapter customAdapter = new CustomAdapter(ctx,R.layout.custom_item,tipos);
+        customAdapter.setCtx(ctx);
+        lista.setAdapter(customAdapter);
+        if (dialog.isShowing()){
+            dialog.dismiss();
         }
+
     }
 
     private Boolean parseJson(String json){
+        tipos = new ArrayList<Tipo>();
         try {
             JSONArray jsonArray = new JSONArray(json);
             //Iterate the jsonArray and print the info of JSONObjects
             for(int i=0; i < jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 int id = jsonObject.optInt("id");
-//                String nome = jsonObject.optString("nome").toString();
+                String nome = jsonObject.optString("nome").toString();
 //                String telefone = jsonObject.optString("telefone").toString();
-                return true;
-
+                Tipo t = new Tipo(id,nome);
+                tipos.add(t);
             }
 
         } catch (JSONException e) {}
 
-        return false;
+        return true;
     }
 
 
